@@ -3,9 +3,10 @@ const router = express.Router()
 const Item = require('../controllers/index')
 const Multer = require('multer')
 const multer = Multer({
+  dest: 'assets/music/',
   storage: Multer.memoryStorage(),
   limits: {
-    fileSize: 5 * 1024 * 1024
+    fileSize: 10 * 1024 * 1024
   }
 })
 
