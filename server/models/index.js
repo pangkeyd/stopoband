@@ -13,7 +13,11 @@ mongoose.connect(URI, { useMongoClient: true })
 
 var item = new Schema({
   title: String,
-  file: String
+  file: String,
+  tags: [
+    {type: String}
+  ],
+  description: String
 })
 
 var Item = mongoose.model('Item', item)
@@ -52,16 +56,34 @@ function saveItem(body, file, cb){
   blobStream.on('finish', () => {
     blob.makePublic().then(() => {
       const publicUrl = format(`https://storage.googleapis.com/${bucket.name}/${blob.name}`)
-      let itemSchema = new Item({
-        title: body.title,
-        file: publicUrl
-      })
-      itemSchema.save((err, item) => {
-        if(err){
-          res.status(200).send(err)
-        }
-        cb(item)
-      })
+      let tags = body.tags.split(',')
+      if(tags.length > 1){
+        let itemSchema = new Item({
+          title: body.title,
+          file: publicUrl,
+          tags: tags,
+          description: body.desc
+        })
+        itemSchema.save((err, item) => {
+          if(err){
+            res.status(200).send(err)
+          }
+          cb(item)
+        })
+      }else{
+        let itemSchema = new Item({
+          title: body.title,
+          file: publicUrl,
+          tags: body.tags,
+          description: body.desc
+        })
+        itemSchema.save((err, item) => {
+          if(err){
+            res.status(200).send(err)
+          }
+          cb(item)
+        })
+      }
     })
   })
 
