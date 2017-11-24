@@ -4,7 +4,7 @@ const userFb = require('../controllers/userFbController')
 const FB = require('fb')
 
 const setAccessToken = (req,res,next)=>{
-  console.log('token',req.headers.token)
+//  JSON.stringify(console.log('token dari roputers',req.headers.token)) 
   FB.setAccessToken(req.headers.token)
   next()
 

@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import store from 'vuex'
+import store from './vuex/store'
 import FBSignInButton from 'vue-facebook-signin-button'
 // var SocialSharing = require('vue-social-sharing');
 import SocialSharing from 'vue-social-sharing'
@@ -15,6 +15,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

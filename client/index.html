@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>client</title>
   </head>
-  <script src="/dist/vue-social-sharing.min.js"></script>
-  <body>
+  <!-- <script src="/dist/vue-social-sharing.min.js"></script> -->
+   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-  <script>
+    <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '901534619998998',
-      cookie     : true,  // enable cookies to allow the server to access the session
-      xfbml      : true,  // parse social plugins on this page
-      version    : 'v2.8' // use graph api version 2.8
+      appId      : '119273738851871',
+      xfbml      : true,
+      version    : 'v2.11'
     });
+    FB.AppEvents.logPageView();
   };
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-      </script>
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
   </body>
 </html>
